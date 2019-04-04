@@ -1,0 +1,51 @@
+" Convience - configs & mappings to smooth out rough edges and make vim feel like home
+
+" Move between wrapped lines, rather than jumping over wrapped segments
+nmap j gj
+nmap k gk
+
+"Use C-Space to Esc out of any mode
+" Use C-Space to Esc out of any mode
+nnoremap <C-Space> <Esc>:noh<CR>
+vnoremap <C-Space> <Esc>gV
+onoremap <C-Space> <Esc>
+cnoremap <C-Space> <C-c>
+inoremap <C-Space> <Esc>
+" Terminal sees <C-@> as <C-space>
+nnoremap <C-@> <Esc>:noh<CR>
+vnoremap <C-@> <Esc>gV
+onoremap <C-@> <Esc>
+cnoremap <C-@> <C-c>
+inoremap <C-@> <Esc>
+
+" install plugins
+nmap <leader>bi :PluginInstall<cr>
+
+" Recover from accidental Ctrl-u   Ctrl-u  in insert mode delete the current line. Ctrl-w delete the word before the cursor
+" first Ctrl-g u to start a new change, as far as undo is concerned.
+" how to user: in insert mode if we accidently delete a line. Press Escu to return to the normal mode, then u to undo, will
+" recover the last line.
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
+
+" mappings to move lines caution: <ESC> here stands for Meta a.k.a Alt  change that in xshell. But press <ESC> still work
+nnoremap <ESC>j :m .+1<CR>==
+nnoremap <ESC>k :m .-2<CR>==
+inoremap <ESC>j <Esc>:m .+1<CR>==gi
+"innoremap <leader>j <Esc>:m .-2<cr>==gi 会导致在insert情况下空格之后输入迟缓。因为它每次都要检查下一次按键是否是 j 或k
+" 才能决定是具体操作
+inoremap <ESC>k <Esc>:m .-2<CR>==gi
+vnoremap <ESC>j :m '>+1<CR>gv=gv
+vnoremap <ESC>k :m '<-2<CR>gv=gv
+
+" indent the whole file
+map <leader>i mmgg=G`m<cr>
+
+" Quickly mapping to clear the highlighting of previous search pattern matches
+nnoremap <leader>h :nohlsearch<cr>
+
+nmap <leader>V :tabe ~/.vim/vimrc<cr>
+" 相当于重新加载了 .vimrc 配置文件。
+nmap <leader>R :so ~/.vim/vimrc<cr>
+
+" vim:ft=vim

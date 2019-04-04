@@ -1,0 +1,25 @@
+set nocompatible
+filetype off
+"Need to set the leader before defining an leader mappings
+let mapleader="\<Space>"
+
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.vim/' . a:directory . '/*'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+      execute 'source' config_file
+    endif
+  endfor
+endfunction
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+call s:SourceConfigFilesIn('rcplugins')
+Plugin 'ctrlpvim/ctrlp.vim'
+call vundle#end()
+
+call s:SourceConfigFilesIn('rcfiles')

@@ -1,0 +1,20 @@
+" Vim Tmux Navigator - Seamlessly navigate between vim splits and tmux panes
+
+Plugin 'christoomey/vim-tmux-navigator'
+noremap <C-f> :VtrSendLinesToRunner<cr>
+
+" By default, it provides 
+" <ctrl-h> => left split
+" <ctrl-j> => Down  <ctrl-k> => Up
+" <ctrl-l> => Right  <ctrl-\> => Previous split
+
+" define custom maps
+" let g:tmux_navigator_no_mappings = 1
+
+" nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+" nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+" nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+" nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+" nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+" vim:ft=vim

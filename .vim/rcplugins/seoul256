@@ -1,0 +1,28 @@
+" seoul256 colorscheme
+Plugin 'junegunn/seoul256.vim'
+
+" ---------------------------
+" seoul256 colorscheme 
+" Unified color scheme (default:dark)
+" let g:seoul256_background = 234
+" colo seoul256
+" Light color schme
+
+" switch 
+set background=dark
+" set background=light
+
+" --------------------change range of dark or light
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+" let g:seoul256_background = 236
+" colo seoul256
+
+" seoul256 (light):
+"   Range:   252 (darkest) ~ 256 (lightest)
+"   Default: 253
+" let g:seoul256_background = 256
+" colo seoul256
+  
+" vim:ft=vim

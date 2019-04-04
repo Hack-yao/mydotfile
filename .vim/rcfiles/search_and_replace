@@ -1,0 +1,12 @@
+" Search / Substitute related configurations
+"-------------------------------------------
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+" %s/pattern/replace_text/g  全局替换
+nnoremap <leader>sub :%s///g<left><left>
+vnoremap <leader>sub :s///g<left><left>
+
+" vim:ft=vim

@@ -1,0 +1,56 @@
+set laststatus=2
+" set statusline+=%4*\ %F\ %* 
+" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+
+"hi User4 cterm=bold ctermfg=169 ctermbg=239 
+
+" status Line
+" ==============================================================================
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0 ? '   '.l:branchname.' ' : ''
+endfunction
+
+
+set statusline=
+set statusline+=%#DiffChange#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+"set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffAdd#%{(mode()=='i')?'\ \ INSERT\ ':''}
+"set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+
+"set statusline+=%#Cursor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+"set statusline+=%#Cursor#%{(mode()=='i')?'\ \ INSERT\ ':''}
+"set statusline+=%#Cursor#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+"set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=\%{StatuslineGit()}" git info
+" set statusline+=\[%{StatuslineGit()}] " git info
+set statusline+=\ %n\           " buffer number
+set statusline+=%#Visual#       " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#     " colour
+set statusline+=%R                        " readonly flag
+set statusline+=%M                        " modified [+] flag
+set statusline+=%#Cursor#               " colour
+set statusline+=%#CursorLine#     " colour
+set statusline+=\ %t\                   " short file name
+set statusline+=%=                          " right align
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %y\                   " file type in lowercase
+" set statusline+=\ %Y\                   " file type in uppercase
+set statusline+=%#CursorIM#     " colour
+set statusline+=\ [%{&fileencoding?&fileencoding:&encoding}]
+set statusline+=\ Line:\%l/%{line('$')}\         " Line number/total line number
+set statusline+=\ Col:\%-2c\         " line + column
+"set statusline+=\ %3l:%-2c\         " line + column
+set statusline+=%#Cursor#       " colour
+set statusline+=\ %3p%%\                " percentage
+
+
+" vim:ft=vim
