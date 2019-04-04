@@ -27,3 +27,5 @@ config add .bashrc
 config commit -m "Add bashrc"
 config push
 ```
+推送到git
+`config push -u origin master`
